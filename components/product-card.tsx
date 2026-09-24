@@ -22,7 +22,7 @@ export function ProductCard({ product }: { product: Product }) {
             className="transition duration-500 group-hover:scale-105"
           />
           <div className="absolute left-3 top-3">
-            <FitBadge fitType={product.fitType} compatibleVehicleIds={product.compatibleVehicleIds} />
+            <FitBadge fitType={product.fitType} compatibleVehicleIds={product.compatibleVehicleIds} compact />
           </div>
           {product.compareAtPriceInr && product.compareAtPriceInr > product.priceInr && (
             <span className="absolute right-3 top-3 rounded-full bg-accent px-2.5 py-1 text-xs font-semibold text-accent-foreground">
@@ -44,7 +44,7 @@ export function ProductCard({ product }: { product: Product }) {
           type="button"
           onClick={() => addItem(product)}
           disabled={product.stock === 0}
-          className="mt-4 w-full rounded-xl bg-white py-2.5 text-sm font-semibold text-background transition hover:bg-white/90 disabled:cursor-not-allowed disabled:bg-white/20 disabled:text-muted"
+          className="mt-4 w-full rounded-xl bg-foreground py-2.5 text-sm font-semibold text-background transition hover:opacity-90 disabled:cursor-not-allowed disabled:bg-border disabled:text-muted disabled:opacity-100"
         >
           {product.stock === 0 ? "Out of stock" : "Add to cart"}
         </button>

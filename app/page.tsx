@@ -1,11 +1,20 @@
 import Link from "next/link";
-import { getCategories, getFeaturedProducts, getVehicleMakes, getVehicleModels } from "@/lib/catalog";
-import { getBundles } from "@/lib/catalog";
-import { getProductsByIds } from "@/lib/catalog";
+import {
+  getBundles,
+  getCategories,
+  getFeaturedProducts,
+  getProductsByIds,
+  getVehicleMakes,
+  getVehicleModels,
+} from "@/lib/catalog";
 import { VehicleSelector } from "@/components/vehicle-selector";
 import { CategoryGrid } from "@/components/category-grid";
 import { ProductGrid } from "@/components/product-grid";
-import { TrustBadges } from "@/components/trust-badges";
+import { StatsSection } from "@/components/stats-section";
+import { HowItWorks } from "@/components/how-it-works";
+import { WhyChooseUs } from "@/components/why-choose-us";
+import { Testimonials } from "@/components/testimonials";
+import { Faq } from "@/components/faq";
 import { Section } from "@/components/section";
 import { formatInr } from "@/lib/utils";
 
@@ -24,28 +33,26 @@ export default async function Home() {
 
   return (
     <div>
-      <section className="border-b border-border bg-gradient-to-b from-surface to-background">
-        <div className="mx-auto grid max-w-6xl gap-10 px-4 py-16 sm:px-6 md:grid-cols-2 md:items-center md:py-24">
-          <div>
-            <h1 className="text-4xl font-bold leading-tight tracking-tight sm:text-5xl">
-              Upgrade your drive.
-              <br />
-              Start with your car.
-            </h1>
-            <p className="mt-4 max-w-md text-muted">
-              Tell us what you drive. We&apos;ll show you only the accessories that actually fit it — no more
-              guessing from a 5,000-product catalog.
-            </p>
+      {/* Hero */}
+      <section className="border-b border-border">
+        <div className="mx-auto flex max-w-3xl flex-col items-center px-4 py-16 text-center sm:px-6 sm:py-24">
+          <h1 className="text-4xl font-bold leading-tight tracking-tight sm:text-6xl">
+            Upgrade your drive.
+            <br />
+            Start with your car.
+          </h1>
+          <p className="mt-5 max-w-lg text-muted">
+            Tell us what you drive. We&apos;ll show you only the accessories that actually fit it — no more
+            guessing from a giant catalog.
+          </p>
+
+          <div className="mt-10 w-full">
+            <VehicleSelector makes={makes} models={models} />
           </div>
-          <VehicleSelector makes={makes} models={models} />
         </div>
       </section>
 
-      <TrustBadges />
-
-      <Section eyebrow="Browse" title="Shop by category">
-        <CategoryGrid categories={categories} />
-      </Section>
+      <StatsSection />
 
       <Section
         eyebrow="Popular"
@@ -57,6 +64,18 @@ export default async function Home() {
         }
       >
         <ProductGrid products={featured} />
+      </Section>
+
+      <Section eyebrow="Process" title="How it works" className="bg-surface/40">
+        <HowItWorks />
+      </Section>
+
+      <Section eyebrow="Why NeedVerse" title="Built around your exact car">
+        <WhyChooseUs />
+      </Section>
+
+      <Section eyebrow="Browse" title="Shop by category">
+        <CategoryGrid categories={categories} />
       </Section>
 
       {heroBundle && heroBundleProducts.length > 0 && (
@@ -85,6 +104,14 @@ export default async function Home() {
           </div>
         </Section>
       )}
+
+      <Section eyebrow="Reviews" title="What drivers say">
+        <Testimonials />
+      </Section>
+
+      <Section eyebrow="FAQ" title="Questions, answered">
+        <Faq />
+      </Section>
 
       <Section eyebrow="Guides" title="Not sure where to start?">
         <div className="grid gap-4 sm:grid-cols-3">

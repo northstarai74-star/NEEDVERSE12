@@ -1,11 +1,11 @@
 import { cn } from "@/lib/utils";
 
 const PALETTES: Record<string, string> = {
-  interior: "from-orange-500/25 to-orange-900/10",
-  exterior: "from-sky-500/25 to-sky-900/10",
-  electronics: "from-violet-500/25 to-violet-900/10",
-  comfort: "from-emerald-500/25 to-emerald-900/10",
-  care: "from-amber-500/25 to-amber-900/10",
+  interior: "from-orange-100 to-orange-50 text-orange-700",
+  exterior: "from-sky-100 to-sky-50 text-sky-700",
+  electronics: "from-violet-100 to-violet-50 text-violet-700",
+  comfort: "from-emerald-100 to-emerald-50 text-emerald-700",
+  care: "from-amber-100 to-amber-50 text-amber-700",
 };
 
 function initials(name: string): string {
@@ -39,12 +39,12 @@ export function ProductImage({
     return <img src={src} alt={name} className={cn("h-full w-full object-cover", className)} />;
   }
 
-  const palette = PALETTES[categoryId ?? ""] ?? "from-zinc-500/25 to-zinc-900/10";
+  const palette = PALETTES[categoryId ?? ""] ?? "from-zinc-100 to-zinc-50 text-zinc-500";
 
   return (
     <div
       className={cn(
-        "flex h-full w-full items-center justify-center bg-gradient-to-br text-2xl font-semibold text-white/70",
+        "flex h-full w-full items-center justify-center bg-gradient-to-br text-2xl font-semibold",
         palette,
         className
       )}

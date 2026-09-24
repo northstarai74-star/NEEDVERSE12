@@ -117,7 +117,7 @@ export default function CheckoutPage() {
             </div>
           </fieldset>
 
-          {error && <p className="text-sm text-red-400">{error}</p>}
+          {error && <p className="text-sm text-red-600">{error}</p>}
         </div>
 
         <div className="h-fit space-y-4 rounded-xl border border-border bg-surface p-5">

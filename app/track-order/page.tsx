@@ -79,7 +79,7 @@ function TrackOrderForm() {
         </button>
       </form>
 
-      {error && <p className="mt-4 text-sm text-red-400">{error}</p>}
+      {error && <p className="mt-4 text-sm text-red-600">{error}</p>}
 
       {order && (
         <div className="mt-8 rounded-xl border border-border bg-surface p-5">

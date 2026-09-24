@@ -74,7 +74,7 @@ export function VehicleSelector({
     <form
       onSubmit={handleSubmit}
       className={cn(
-        "rounded-2xl border border-border bg-surface p-5 shadow-2xl shadow-black/40",
+        "rounded-2xl border border-border bg-surface p-5 shadow-xl shadow-black/10",
         variant === "hero" ? "w-full max-w-xl" : "w-full"
       )}
     >
@@ -135,7 +135,7 @@ export function VehicleSelector({
       <button
         type="submit"
         disabled={!canSubmit}
-        className="mt-4 w-full rounded-xl bg-accent py-3.5 text-sm font-bold text-accent-foreground transition hover:bg-accent/90 disabled:cursor-not-allowed disabled:bg-white/10 disabled:text-muted"
+        className="mt-4 w-full rounded-xl bg-accent py-3.5 text-sm font-bold text-accent-foreground transition hover:bg-accent/90 disabled:cursor-not-allowed disabled:bg-border disabled:text-muted"
       >
         Find my accessories
       </button>

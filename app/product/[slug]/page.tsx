@@ -82,7 +82,7 @@ export default async function ProductPage(props: PageProps<"/product/[slug]">) {
             ) : compatibleModels.length > 0 ? (
               <ul className="mt-2 space-y-1 text-sm">
                 {compatibleModels.map((m) => (
-                  <li key={m.id} className="text-emerald-400">
+                  <li key={m.id} className="text-emerald-700">
                     ✓ {m.makeName} {m.name} ({m.yearStart}
                     {m.yearEnd ? `–${m.yearEnd}` : "+"})
                   </li>
