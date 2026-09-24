@@ -29,7 +29,7 @@ export default async function ProductPage(props: PageProps<"/product/[slug]">) {
 
       <div className="grid gap-10 md:grid-cols-2">
         <div className="aspect-square overflow-hidden border border-border bg-surface">
-          <ProductImage name={product.name} categoryId={product.categoryId} src={product.images[0]} />
+          <ProductImage name={product.name} categoryId={product.categoryId} src={product.images[0]} showCaption={false} />
         </div>
 
         <div>

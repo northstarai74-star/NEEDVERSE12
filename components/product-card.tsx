@@ -18,6 +18,7 @@ export function ProductCard({ product }: { product: Product }) {
           <ProductImage
             name={product.name}
             categoryId={product.categoryId}
+            categoryName={product.categoryName}
             src={product.images[0]}
             className="transition duration-500 group-hover:scale-105"
           />
@@ -33,13 +34,8 @@ export function ProductCard({ product }: { product: Product }) {
       </Link>
 
       <div className="flex flex-1 flex-col pt-3">
-        <span className="label-mono text-xs text-muted">{product.categoryName}</span>
-        <Link href={`/product/${product.id}`}>
-          <h3 className="mt-1 text-lg font-bold uppercase leading-tight tracking-tight hover:text-accent">
-            {product.name}
-          </h3>
-        </Link>
-        <RatingStars rating={product.rating} reviewCount={product.reviewCount} className="mt-2" />
+        <h3 className="sr-only">{product.name}</h3>
+        <RatingStars rating={product.rating} reviewCount={product.reviewCount} />
         <PriceTag priceInr={product.priceInr} compareAtPriceInr={product.compareAtPriceInr} className="mt-2" />
 
         <button
