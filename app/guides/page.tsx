@@ -29,18 +29,14 @@ const GUIDES = [
 export default function GuidesPage() {
   return (
     <div className="mx-auto max-w-4xl px-4 py-10 sm:px-6">
-      <p className="text-xs uppercase tracking-widest text-muted">Guides</p>
-      <h1 className="mt-1 text-3xl font-bold tracking-tight">Not sure what to buy first?</h1>
+      <p className="label-mono text-xs text-accent">[ Guides ]</p>
+      <h1 className="font-display mt-2 text-4xl sm:text-5xl">Not sure what to buy first?</h1>
 
-      <div className="mt-8 space-y-4">
+      <div className="mt-8 divide-y divide-border border border-border">
         {GUIDES.map((guide) => (
-          <Link
-            key={guide.title}
-            href={guide.href}
-            className="block rounded-2xl border border-border bg-surface p-6 transition hover:border-accent/50"
-          >
-            <p className="font-semibold">{guide.title}</p>
-            <p className="mt-1 text-sm text-muted">{guide.summary}</p>
+          <Link key={guide.title} href={guide.href} className="block p-6 transition hover:bg-surface">
+            <p className="text-lg font-bold uppercase tracking-tight">{guide.title}</p>
+            <p className="label-mono mt-2 text-xs text-muted">{guide.summary}</p>
           </Link>
         ))}
       </div>

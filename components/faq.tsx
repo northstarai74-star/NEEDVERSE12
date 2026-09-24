@@ -27,14 +27,17 @@ const FAQS = [
 
 export function Faq() {
   return (
-    <div className="mx-auto max-w-3xl divide-y divide-border rounded-2xl border border-border bg-surface">
-      {FAQS.map((item) => (
-        <details key={item.q} className="group p-5 open:pb-5">
-          <summary className="flex cursor-pointer list-none items-center justify-between gap-4 font-semibold">
-            {item.q}
-            <span className="shrink-0 text-muted transition group-open:rotate-45">+</span>
+    <div className="mx-auto max-w-3xl divide-y divide-border border border-border">
+      {FAQS.map((item, i) => (
+        <details key={item.q} className="group bg-surface p-5 open:pb-5">
+          <summary className="flex cursor-pointer list-none items-center gap-4 font-semibold">
+            <span className="label-mono text-xs text-accent">[{String(i + 1).padStart(2, "0")}]</span>
+            <span className="flex-1">{item.q}</span>
+            <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-border text-muted transition group-open:rotate-45">
+              +
+            </span>
           </summary>
-          <p className="mt-3 text-sm text-muted">{item.a}</p>
+          <p className="label-mono mt-3 pl-9 text-xs text-muted">{item.a}</p>
         </details>
       ))}
     </div>

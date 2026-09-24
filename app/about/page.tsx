@@ -3,7 +3,7 @@ export const metadata = { title: "About — NeedVerse" };
 export default function AboutPage() {
   return (
     <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6">
-      <h1 className="text-3xl font-bold tracking-tight">The easiest way to upgrade your specific car</h1>
+      <h1 className="font-display text-4xl sm:text-5xl">The easiest way to upgrade your specific car</h1>
       <p className="mt-4 text-muted">
         Most car accessory stores make you dig through thousands of products hoping something fits. NeedVerse flips
         that: tell us your make, model, year and fuel type, and we show you only what&apos;s actually compatible —

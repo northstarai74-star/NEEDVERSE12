@@ -16,7 +16,7 @@ export function AddToCartForm({ product }: { product: Product }) {
   return (
     <div>
       <div className="flex items-center gap-3">
-        <div className="flex items-center rounded-xl border border-border">
+        <div className="flex items-center border border-border">
           <button
             type="button"
             onClick={() => setQuantity((q) => Math.max(1, q - 1))}
@@ -25,7 +25,7 @@ export function AddToCartForm({ product }: { product: Product }) {
           >
             −
           </button>
-          <span className="w-10 text-center text-sm font-semibold">{quantity}</span>
+          <span className="w-10 text-center font-mono text-sm font-semibold">{quantity}</span>
           <button
             type="button"
             onClick={() => setQuantity((q) => Math.min(product.stock || 99, q + 1))}
@@ -35,7 +35,7 @@ export function AddToCartForm({ product }: { product: Product }) {
             +
           </button>
         </div>
-        <span className="text-xs text-muted">
+        <span className="label-mono text-xs text-muted">
           {outOfStock ? "Out of stock" : `${product.stock} in stock`}
         </span>
       </div>
@@ -49,7 +49,7 @@ export function AddToCartForm({ product }: { product: Product }) {
             setAdded(true);
             setTimeout(() => setAdded(false), 1500);
           }}
-          className="rounded-xl border border-border py-3 text-sm font-semibold transition hover:bg-surface disabled:cursor-not-allowed disabled:opacity-40"
+          className="label-mono border border-border py-3 text-xs font-semibold transition hover:bg-surface disabled:cursor-not-allowed disabled:opacity-40"
         >
           {added ? "Added ✓" : "Add to cart"}
         </button>
@@ -60,7 +60,7 @@ export function AddToCartForm({ product }: { product: Product }) {
             addItem(product, quantity);
             router.push("/cart");
           }}
-          className="rounded-xl bg-accent py-3 text-sm font-bold text-accent-foreground transition hover:bg-accent/90 disabled:cursor-not-allowed disabled:opacity-40"
+          className="label-mono bg-accent py-3 text-xs font-bold text-accent-foreground transition hover:bg-accent/90 disabled:cursor-not-allowed disabled:opacity-40"
         >
           Buy now
         </button>

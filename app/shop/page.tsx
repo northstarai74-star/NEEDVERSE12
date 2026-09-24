@@ -29,11 +29,11 @@ export default async function ShopPage(props: PageProps<"/shop">) {
 
   return (
     <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6">
-      <p className="text-xs uppercase tracking-widest text-muted">Shop</p>
-      <h1 className="mt-1 text-3xl font-bold tracking-tight">
+      <p className="label-mono text-xs text-accent">[ Shop ]</p>
+      <h1 className="font-display mt-2 text-4xl sm:text-5xl">
         {vehicle ? `Accessories for your ${vehicle.makeName} ${vehicle.name}` : activeCategory?.name ?? "All accessories"}
       </h1>
-      <p className="mt-2 text-sm text-muted">{products.length} products</p>
+      <p className="label-mono mt-2 text-xs text-muted">{products.length} products</p>
 
       <div className="mt-8 grid gap-8 md:grid-cols-[220px_1fr]">
         <Filters categories={categories} />

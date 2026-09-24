@@ -14,7 +14,7 @@ export function ProductCard({ product }: { product: Product }) {
   return (
     <article className="group flex flex-col">
       <Link href={`/product/${product.id}`} className="block">
-        <div className="relative aspect-square overflow-hidden rounded-2xl border border-border bg-surface">
+        <div className="relative aspect-square overflow-hidden border border-border bg-surface">
           <ProductImage
             name={product.name}
             categoryId={product.categoryId}
@@ -25,7 +25,7 @@ export function ProductCard({ product }: { product: Product }) {
             <FitBadge fitType={product.fitType} compatibleVehicleIds={product.compatibleVehicleIds} compact />
           </div>
           {product.compareAtPriceInr && product.compareAtPriceInr > product.priceInr && (
-            <span className="absolute right-3 top-3 rounded-full bg-accent px-2.5 py-1 text-xs font-semibold text-accent-foreground">
+            <span className="label-mono absolute right-3 top-3 rounded-full bg-accent px-2.5 py-1 text-xs font-semibold text-accent-foreground">
               {Math.round((1 - product.priceInr / product.compareAtPriceInr) * 100)}% OFF
             </span>
           )}
@@ -33,9 +33,11 @@ export function ProductCard({ product }: { product: Product }) {
       </Link>
 
       <div className="flex flex-1 flex-col pt-3">
-        <span className="text-xs uppercase tracking-wide text-muted">{product.categoryName}</span>
+        <span className="label-mono text-xs text-muted">{product.categoryName}</span>
         <Link href={`/product/${product.id}`}>
-          <h3 className="mt-1 font-semibold leading-snug hover:text-accent">{product.name}</h3>
+          <h3 className="mt-1 text-lg font-bold uppercase leading-tight tracking-tight hover:text-accent">
+            {product.name}
+          </h3>
         </Link>
         <RatingStars rating={product.rating} reviewCount={product.reviewCount} className="mt-2" />
         <PriceTag priceInr={product.priceInr} compareAtPriceInr={product.compareAtPriceInr} className="mt-2" />
@@ -44,7 +46,7 @@ export function ProductCard({ product }: { product: Product }) {
           type="button"
           onClick={() => addItem(product)}
           disabled={product.stock === 0}
-          className="mt-4 w-full rounded-xl bg-foreground py-2.5 text-sm font-semibold text-background transition hover:opacity-90 disabled:cursor-not-allowed disabled:bg-border disabled:text-muted disabled:opacity-100"
+          className="label-mono mt-4 w-full border border-foreground py-2.5 text-xs font-semibold transition hover:bg-foreground hover:text-background disabled:cursor-not-allowed disabled:border-border disabled:text-muted"
         >
           {product.stock === 0 ? "Out of stock" : "Add to cart"}
         </button>

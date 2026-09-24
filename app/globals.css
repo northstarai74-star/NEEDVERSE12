@@ -1,14 +1,14 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --surface: #f6f6f4;
-  --surface-hover: #eeeeeb;
-  --foreground: #0a0a0a;
-  --muted: #6b7280;
-  --border: #e5e5e0;
+  --background: #0d0d0d;
+  --surface: #1a1a1a;
+  --surface-hover: #222222;
+  --foreground: #ffffff;
+  --muted: #9a9a9a;
+  --border: #333333;
   --accent: #ff5a1f;
-  --accent-foreground: #ffffff;
+  --accent-foreground: #0d0d0d;
 }
 
 @theme inline {
@@ -22,10 +22,46 @@
   --color-accent-foreground: var(--accent-foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --font-display: var(--font-display);
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
+}
+
+/* Condensed, uppercase display type for headlines — the template's signature. */
+.font-display {
+  font-family: var(--font-display), "Arial Narrow", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+  line-height: 0.92;
+}
+
+/* Small uppercase monospace label, e.g. "[ ABOUT US ]" eyebrows and nav items. */
+.label-mono {
+  font-family: var(--font-geist-mono), monospace;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+/* Subtle photographic grain — layered over dark sections for texture. */
+.bg-grain {
+  position: relative;
+}
+.bg-grain::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.12;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='120'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+}
+
+/* Blueprint-style dot grid, used behind hero/stat bands. */
+.bg-dot-grid {
+  background-image: radial-gradient(var(--border) 1px, transparent 1px);
+  background-size: 32px 32px;
 }

@@ -8,9 +8,9 @@ export default async function CarsPage() {
 
   return (
     <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6">
-      <p className="text-xs uppercase tracking-widest text-muted">Shop by car</p>
-      <h1 className="mt-1 text-3xl font-bold tracking-tight">Find accessories for your exact model</h1>
-      <p className="mt-2 max-w-xl text-sm text-muted">
+      <p className="label-mono text-xs text-accent">[ Shop by car ]</p>
+      <h1 className="font-display mt-2 text-4xl sm:text-5xl">Find accessories for your exact model</h1>
+      <p className="label-mono mt-3 max-w-xl text-xs text-muted">
         Pick your car below to see only the accessories that fit it — vehicle-specific parts and every universal
         accessory in the catalog.
       </p>
@@ -22,16 +22,16 @@ export default async function CarsPage() {
 
           return (
             <div key={make.id}>
-              <h2 className="mb-4 text-lg font-semibold">{make.name}</h2>
-              <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4">
+              <h2 className="font-display mb-4 text-2xl">{make.name}</h2>
+              <div className="grid grid-cols-1 divide-y divide-border border border-border sm:grid-cols-2 sm:divide-x sm:divide-y-0 md:grid-cols-4">
                 {makeModels.map((model) => (
                   <Link
                     key={model.id}
                     href={`/shop?vehicle=${model.id}`}
-                    className="rounded-xl border border-border bg-surface px-4 py-5 text-center transition hover:border-accent/50"
+                    className="p-5 text-center transition hover:bg-surface"
                   >
-                    <p className="font-semibold">{model.name}</p>
-                    <p className="mt-1 text-xs text-muted">
+                    <p className="text-lg font-bold uppercase tracking-tight">{model.name}</p>
+                    <p className="label-mono mt-1 text-xs text-muted">
                       {model.yearStart}
                       {model.yearEnd ? `–${model.yearEnd}` : "+"}
                     </p>

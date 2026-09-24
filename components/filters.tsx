@@ -37,10 +37,10 @@ export function Filters({ categories }: { categories: Category[] }) {
   const activeVehicle = searchParams.get("vehicle");
 
   return (
-    <aside className="space-y-8">
+    <aside className="label-mono space-y-8 text-xs">
       {activeVehicle && (
-        <div className="rounded-xl border border-accent/40 bg-accent/10 p-4 text-sm">
-          <p className="font-semibold">Shopping for your car</p>
+        <div className="border border-accent/40 bg-accent/10 p-4">
+          <p className="font-semibold text-foreground">Shopping for your car</p>
           <button
             type="button"
             onClick={() => {
@@ -48,7 +48,7 @@ export function Filters({ categories }: { categories: Category[] }) {
               params.delete("vehicle");
               router.push(`${pathname}?${params.toString()}`);
             }}
-            className="mt-1 text-xs text-muted underline"
+            className="mt-1 text-muted underline"
           >
             Show all products instead
           </button>
@@ -56,13 +56,13 @@ export function Filters({ categories }: { categories: Category[] }) {
       )}
 
       <div>
-        <p className="mb-3 text-sm font-semibold">Category</p>
+        <p className="mb-3 text-accent">[ Category ]</p>
         <div className="flex flex-col gap-1">
           <button
             type="button"
             onClick={() => updateParam("category", undefined)}
             className={cn(
-              "rounded-lg px-3 py-2 text-left text-sm",
+              "px-3 py-2 text-left",
               !activeCategory ? "bg-accent/15 text-accent" : "text-muted hover:bg-surface"
             )}
           >
@@ -74,7 +74,7 @@ export function Filters({ categories }: { categories: Category[] }) {
               type="button"
               onClick={() => updateParam("category", category.id)}
               className={cn(
-                "rounded-lg px-3 py-2 text-left text-sm",
+                "px-3 py-2 text-left",
                 activeCategory === category.id ? "bg-accent/15 text-accent" : "text-muted hover:bg-surface"
               )}
             >
@@ -85,7 +85,7 @@ export function Filters({ categories }: { categories: Category[] }) {
       </div>
 
       <div>
-        <p className="mb-3 text-sm font-semibold">Price</p>
+        <p className="mb-3 text-accent">[ Price ]</p>
         <div className="flex flex-col gap-1">
           {PRICE_BRACKETS.map((bracket) => {
             const active = String(bracket.min ?? "") === (activeMin ?? "") && String(bracket.max ?? "") === (activeMax ?? "");
@@ -107,7 +107,7 @@ export function Filters({ categories }: { categories: Category[] }) {
                   router.push(`${pathname}?${params.toString()}`);
                 }}
                 className={cn(
-                  "rounded-lg px-3 py-2 text-left text-sm",
+                  "px-3 py-2 text-left",
                   active ? "bg-accent/15 text-accent" : "text-muted hover:bg-surface"
                 )}
               >
@@ -119,11 +119,11 @@ export function Filters({ categories }: { categories: Category[] }) {
       </div>
 
       <div>
-        <p className="mb-3 text-sm font-semibold">Sort by</p>
+        <p className="mb-3 text-accent">[ Sort by ]</p>
         <select
           value={activeSort}
           onChange={(e) => updateParam("sort", e.target.value === "recommended" ? undefined : e.target.value)}
-          className="w-full rounded-lg border border-border bg-background px-3 py-2 text-sm"
+          className="label-mono w-full border border-border bg-background px-3 py-2 text-xs text-foreground"
         >
           {SORTS.map((sort) => (
             <option key={sort.value} value={sort.value}>

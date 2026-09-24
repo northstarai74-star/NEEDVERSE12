@@ -72,9 +72,9 @@ export default function CheckoutPage() {
   if (items.length === 0) {
     return (
       <div className="mx-auto max-w-2xl px-4 py-20 text-center sm:px-6">
-        <p className="text-2xl font-bold">Nothing to check out</p>
-        <p className="mt-2 text-muted">Add a product to your cart first.</p>
-        <Link href="/shop" className="mt-6 inline-block rounded-xl bg-accent px-6 py-3 text-sm font-bold text-accent-foreground">
+        <p className="font-display text-4xl">Nothing to check out</p>
+        <p className="label-mono mt-3 text-xs text-muted">Add a product to your cart first.</p>
+        <Link href="/shop" className="label-mono mt-6 inline-block bg-accent px-6 py-3 text-xs font-bold text-accent-foreground">
           Browse the shop
         </Link>
       </div>
@@ -82,16 +82,16 @@ export default function CheckoutPage() {
   }
 
   const inputClass =
-    "w-full rounded-lg border border-border bg-background px-3 py-2.5 text-sm focus:border-accent focus:outline-none";
+    "label-mono w-full border border-border bg-background px-3 py-2.5 text-xs text-foreground placeholder:text-muted focus:border-accent focus:outline-none";
 
   return (
     <div className="mx-auto max-w-4xl px-4 py-10 sm:px-6">
-      <h1 className="text-2xl font-bold tracking-tight">Checkout</h1>
+      <h1 className="font-display text-4xl">Checkout</h1>
 
       <form onSubmit={handleSubmit} className="mt-8 grid gap-8 md:grid-cols-[1fr_300px]">
         <div className="space-y-6">
           <fieldset className="space-y-3">
-            <legend className="mb-1 text-sm font-semibold">Contact</legend>
+            <legend className="label-mono mb-2 text-xs text-accent">[ Contact ]</legend>
             <input required placeholder="Full name" value={form.fullName} onChange={(e) => update("fullName", e.target.value)} className={inputClass} />
             <div className="grid grid-cols-2 gap-3">
               <input required type="email" placeholder="Email" value={form.email} onChange={(e) => update("email", e.target.value)} className={inputClass} />
@@ -100,7 +100,7 @@ export default function CheckoutPage() {
           </fieldset>
 
           <fieldset className="space-y-3">
-            <legend className="mb-1 text-sm font-semibold">Delivery address</legend>
+            <legend className="label-mono mb-2 text-xs text-accent">[ Delivery address ]</legend>
             <input required placeholder="Address line 1" value={form.line1} onChange={(e) => update("line1", e.target.value)} className={inputClass} />
             <input placeholder="Address line 2 (optional)" value={form.line2} onChange={(e) => update("line2", e.target.value)} className={inputClass} />
             <div className="grid grid-cols-3 gap-3">
@@ -111,17 +111,17 @@ export default function CheckoutPage() {
           </fieldset>
 
           <fieldset>
-            <legend className="mb-1 text-sm font-semibold">Payment</legend>
-            <div className="rounded-lg border border-border bg-surface px-4 py-3 text-sm">
+            <legend className="label-mono mb-2 text-xs text-accent">[ Payment ]</legend>
+            <div className="label-mono border border-border bg-surface px-4 py-3 text-xs text-muted">
               Cash on Delivery — pay when your order arrives.
             </div>
           </fieldset>
 
-          {error && <p className="text-sm text-red-600">{error}</p>}
+          {error && <p className="label-mono text-xs text-red-500">{error}</p>}
         </div>
 
-        <div className="h-fit space-y-4 rounded-xl border border-border bg-surface p-5">
-          <ul className="space-y-2 text-sm">
+        <div className="h-fit space-y-4 border border-border bg-surface p-5">
+          <ul className="label-mono space-y-2 text-xs">
             {items.map((item) => (
               <li key={item.productId} className="flex justify-between text-muted">
                 <span>
@@ -131,16 +131,16 @@ export default function CheckoutPage() {
               </li>
             ))}
           </ul>
-          <div className="border-t border-border pt-3">
-            <div className="flex justify-between text-sm text-muted">
+          <div className="label-mono border-t border-border pt-3 text-xs">
+            <div className="flex justify-between text-muted">
               <span>Subtotal</span>
               <span>{formatInr(subtotalInr)}</span>
             </div>
-            <div className="mt-1 flex justify-between text-sm text-muted">
+            <div className="mt-1 flex justify-between text-muted">
               <span>Shipping</span>
               <span>{shippingInr === 0 ? "Free" : formatInr(shippingInr)}</span>
             </div>
-            <div className="mt-2 flex justify-between border-t border-border pt-2 font-bold">
+            <div className="mt-2 flex justify-between border-t border-border pt-2 font-bold text-foreground">
               <span>Total</span>
               <span>{formatInr(totalInr)}</span>
             </div>
@@ -148,7 +148,7 @@ export default function CheckoutPage() {
           <button
             type="submit"
             disabled={submitting}
-            className="w-full rounded-xl bg-accent py-3 text-sm font-bold text-accent-foreground hover:bg-accent/90 disabled:opacity-60"
+            className="label-mono w-full bg-accent py-3 text-xs font-bold text-accent-foreground hover:bg-accent/90 disabled:opacity-60"
           >
             {submitting ? "Placing order..." : `Place order — ${formatInr(totalInr)}`}
           </button>

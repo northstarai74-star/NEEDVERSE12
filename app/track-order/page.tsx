@@ -45,8 +45,8 @@ function TrackOrderForm() {
 
   return (
     <div className="mx-auto max-w-xl px-4 py-14 sm:px-6">
-      <h1 className="text-2xl font-bold tracking-tight">Track your order</h1>
-      <p className="mt-2 text-sm text-muted">Enter your order number and the email you used at checkout.</p>
+      <h1 className="font-display text-4xl">Track your order</h1>
+      <p className="label-mono mt-3 text-xs text-muted">Enter your order number and the email you used at checkout.</p>
 
       <form
         onSubmit={(e) => {
@@ -60,7 +60,7 @@ function TrackOrderForm() {
           placeholder="Order number (e.g. NV1A2B3C)"
           value={orderNumber}
           onChange={(e) => setOrderNumber(e.target.value)}
-          className="w-full rounded-lg border border-border bg-background px-3 py-2.5 text-sm focus:border-accent focus:outline-none"
+          className="label-mono w-full border border-border bg-background px-3 py-2.5 text-xs text-foreground placeholder:text-muted focus:border-accent focus:outline-none"
         />
         <input
           required
@@ -68,38 +68,36 @@ function TrackOrderForm() {
           placeholder="Email used at checkout"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          className="w-full rounded-lg border border-border bg-background px-3 py-2.5 text-sm focus:border-accent focus:outline-none"
+          className="label-mono w-full border border-border bg-background px-3 py-2.5 text-xs text-foreground placeholder:text-muted focus:border-accent focus:outline-none"
         />
         <button
           type="submit"
           disabled={loading}
-          className="w-full rounded-xl bg-accent py-3 text-sm font-bold text-accent-foreground hover:bg-accent/90 disabled:opacity-60"
+          className="label-mono w-full bg-accent py-3 text-xs font-bold text-accent-foreground hover:bg-accent/90 disabled:opacity-60"
         >
           {loading ? "Looking up..." : "Track order"}
         </button>
       </form>
 
-      {error && <p className="mt-4 text-sm text-red-600">{error}</p>}
+      {error && <p className="label-mono mt-4 text-xs text-red-500">{error}</p>}
 
       {order && (
-        <div className="mt-8 rounded-xl border border-border bg-surface p-5">
-          <p className="font-semibold">Order #{order.orderNumber}</p>
-          <p className="mt-1 text-sm text-muted">Placed on {new Date(order.createdAt).toLocaleDateString("en-IN")}</p>
+        <div className="mt-8 border border-border bg-surface p-5">
+          <p className="font-bold">Order #{order.orderNumber}</p>
+          <p className="label-mono mt-1 text-xs text-muted">Placed on {new Date(order.createdAt).toLocaleDateString("en-IN")}</p>
 
           <div className="mt-5 flex items-center justify-between">
             {STATUS_STEPS.map((step, i) => (
               <div key={step} className="flex flex-1 flex-col items-center text-center">
-                <div
-                  className={`h-2.5 w-2.5 rounded-full ${i <= stepIndex ? "bg-accent" : "bg-border"}`}
-                />
-                <span className={`mt-2 text-xs capitalize ${i <= stepIndex ? "text-foreground" : "text-muted"}`}>
+                <div className={`h-2.5 w-2.5 rounded-full ${i <= stepIndex ? "bg-accent" : "bg-border"}`} />
+                <span className={`label-mono mt-2 text-xs ${i <= stepIndex ? "text-foreground" : "text-muted"}`}>
                   {step}
                 </span>
               </div>
             ))}
           </div>
 
-          <div className="mt-6 space-y-1.5 border-t border-border pt-4 text-sm">
+          <div className="label-mono mt-6 space-y-1.5 border-t border-border pt-4 text-xs">
             {order.items.map((item) => (
               <div key={item.productId} className="flex justify-between text-muted">
                 <span>

@@ -19,7 +19,7 @@ export default async function ProductPage(props: PageProps<"/product/[slug]">) {
 
   return (
     <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6">
-      <nav className="mb-6 text-xs text-muted">
+      <nav className="label-mono mb-6 text-xs text-muted">
         <Link href="/shop" className="hover:text-foreground">Shop</Link>
         {" / "}
         <Link href={`/shop?category=${product.categoryId}`} className="hover:text-foreground">
@@ -28,14 +28,14 @@ export default async function ProductPage(props: PageProps<"/product/[slug]">) {
       </nav>
 
       <div className="grid gap-10 md:grid-cols-2">
-        <div className="aspect-square overflow-hidden rounded-2xl border border-border bg-surface">
+        <div className="aspect-square overflow-hidden border border-border bg-surface">
           <ProductImage name={product.name} categoryId={product.categoryId} src={product.images[0]} />
         </div>
 
         <div>
           <FitBadge fitType={product.fitType} compatibleVehicleIds={product.compatibleVehicleIds} />
-          <h1 className="mt-3 text-2xl font-bold tracking-tight sm:text-3xl">{product.name}</h1>
-          {product.brand && <p className="mt-1 text-sm text-muted">by {product.brand}</p>}
+          <h1 className="font-display mt-3 text-4xl sm:text-5xl">{product.name}</h1>
+          {product.brand && <p className="label-mono mt-2 text-xs text-muted">by {product.brand}</p>}
 
           <RatingStars rating={product.rating} reviewCount={product.reviewCount} className="mt-3" />
           <PriceTag priceInr={product.priceInr} compareAtPriceInr={product.compareAtPriceInr} size="lg" className="mt-4" />
@@ -46,14 +46,14 @@ export default async function ProductPage(props: PageProps<"/product/[slug]">) {
             <AddToCartForm product={product} />
           </div>
 
-          <p className="mt-4 text-xs text-muted">
+          <p className="label-mono mt-4 text-xs text-muted">
             Delivery in 2–5 business days · Cash on delivery available · 7-day easy returns
           </p>
 
           {product.whatsIncluded.length > 0 && (
             <div className="mt-8 border-t border-border pt-6">
-              <p className="font-semibold">What&apos;s included</p>
-              <ul className="mt-2 space-y-1 text-sm text-muted">
+              <p className="label-mono text-xs text-accent">[ What&apos;s included ]</p>
+              <ul className="label-mono mt-3 space-y-1.5 text-xs text-muted">
                 {product.whatsIncluded.map((item) => (
                   <li key={item}>• {item}</li>
                 ))}
@@ -63,12 +63,12 @@ export default async function ProductPage(props: PageProps<"/product/[slug]">) {
 
           {Object.keys(product.specs).length > 0 && (
             <div className="mt-6 border-t border-border pt-6">
-              <p className="font-semibold">Specifications</p>
-              <dl className="mt-2 grid grid-cols-2 gap-y-1.5 text-sm">
+              <p className="label-mono text-xs text-accent">[ Specifications ]</p>
+              <dl className="label-mono mt-3 grid grid-cols-2 gap-y-2 text-xs">
                 {Object.entries(product.specs).map(([key, value]) => (
                   <div key={key} className="contents">
                     <dt className="text-muted">{key}</dt>
-                    <dd>{value}</dd>
+                    <dd className="text-foreground">{value}</dd>
                   </div>
                 ))}
               </dl>
@@ -76,20 +76,20 @@ export default async function ProductPage(props: PageProps<"/product/[slug]">) {
           )}
 
           <div className="mt-6 border-t border-border pt-6">
-            <p className="font-semibold">Vehicle compatibility</p>
+            <p className="label-mono text-xs text-accent">[ Vehicle compatibility ]</p>
             {product.fitType === "universal" ? (
-              <p className="mt-2 text-sm text-muted">Fits all cars — universal accessory.</p>
+              <p className="label-mono mt-3 text-xs text-muted">Fits all cars — universal accessory.</p>
             ) : compatibleModels.length > 0 ? (
-              <ul className="mt-2 space-y-1 text-sm">
+              <ul className="label-mono mt-3 space-y-1.5 text-xs">
                 {compatibleModels.map((m) => (
-                  <li key={m.id} className="text-emerald-700">
+                  <li key={m.id} className="text-emerald-400">
                     ✓ {m.makeName} {m.name} ({m.yearStart}
                     {m.yearEnd ? `–${m.yearEnd}` : "+"})
                   </li>
                 ))}
               </ul>
             ) : (
-              <p className="mt-2 text-sm text-muted">Compatibility list coming soon.</p>
+              <p className="label-mono mt-3 text-xs text-muted">Compatibility list coming soon.</p>
             )}
           </div>
         </div>
@@ -97,7 +97,7 @@ export default async function ProductPage(props: PageProps<"/product/[slug]">) {
 
       {related.length > 0 && (
         <div className="mt-16 border-t border-border pt-10">
-          <h2 className="mb-6 text-xl font-bold">You may also like</h2>
+          <h2 className="font-display mb-6 text-3xl">You may also like</h2>
           <ProductGrid products={related} />
         </div>
       )}

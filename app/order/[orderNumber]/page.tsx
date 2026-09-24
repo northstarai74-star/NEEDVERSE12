@@ -13,39 +13,39 @@ export default async function OrderConfirmationPage(props: PageProps<"/order/[or
 
   return (
     <div className="mx-auto max-w-2xl px-4 py-16 text-center sm:px-6">
-      <p className="text-4xl">✓</p>
-      <h1 className="mt-4 text-2xl font-bold">Order confirmed</h1>
-      <p className="mt-2 text-muted">
-        Order <span className="font-mono text-foreground">#{order.orderNumber}</span> is being prepared.
+      <p className="text-4xl text-accent">✓</p>
+      <h1 className="font-display mt-4 text-4xl">Order confirmed</h1>
+      <p className="label-mono mt-3 text-xs text-muted">
+        Order <span className="text-foreground">#{order.orderNumber}</span> is being prepared.
       </p>
 
-      <div className="mt-8 space-y-2 rounded-xl border border-border bg-surface p-6 text-left">
+      <div className="label-mono mt-8 space-y-2 border border-border bg-surface p-6 text-left text-xs">
         {order.items.map((item) => (
-          <div key={item.productId} className="flex justify-between text-sm">
+          <div key={item.productId} className="flex justify-between">
             <span>
               {item.productName} × {item.quantity}
             </span>
             <span className="text-muted">{formatInr(item.lineTotalInr)}</span>
           </div>
         ))}
-        <div className="flex justify-between border-t border-border pt-2 font-bold">
+        <div className="flex justify-between border-t border-border pt-2 font-bold text-foreground">
           <span>Total (COD)</span>
           <span>{formatInr(order.totalInr)}</span>
         </div>
       </div>
 
-      <p className="mt-6 text-sm text-muted">
+      <p className="label-mono mt-6 text-xs text-muted">
         Delivering to {order.shippingAddress.line1}, {order.shippingAddress.city}, {order.shippingAddress.state} —{" "}
         {order.shippingAddress.pincode}
       </p>
 
-      <div className="mt-8 flex justify-center gap-3">
-        <Link href="/shop" className="rounded-xl border border-border px-6 py-3 text-sm font-semibold hover:bg-surface">
+      <div className="label-mono mt-8 flex justify-center gap-3 text-xs">
+        <Link href="/shop" className="border border-border px-6 py-3 font-semibold hover:bg-surface">
           Continue shopping
         </Link>
         <Link
           href={`/track-order?orderNumber=${order.orderNumber}&email=${encodeURIComponent(order.customerEmail)}`}
-          className="rounded-xl bg-accent px-6 py-3 text-sm font-bold text-accent-foreground hover:bg-accent/90"
+          className="bg-accent px-6 py-3 font-bold text-accent-foreground hover:bg-accent/90"
         >
           Track this order
         </Link>

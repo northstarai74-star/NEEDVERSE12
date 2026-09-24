@@ -1,25 +1,19 @@
 import Link from "next/link";
 import type { Category } from "@/lib/types";
 
-const ICONS: Record<string, string> = {
-  interior: "🪑",
-  exterior: "🚙",
-  electronics: "🔌",
-  comfort: "🛋️",
-  care: "🧽",
-};
-
 export function CategoryGrid({ categories }: { categories: Category[] }) {
   return (
-    <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-5">
-      {categories.map((category) => (
+    <div className="divide-y divide-border border-t border-border">
+      {categories.map((category, i) => (
         <Link
           key={category.id}
           href={`/shop?category=${category.id}`}
-          className="group flex flex-col items-center gap-3 rounded-2xl border border-border bg-surface px-4 py-8 text-center transition hover:border-accent/50 hover:bg-surface-hover"
+          className="group flex items-center justify-between gap-4 py-6 transition hover:pl-3"
         >
-          <span className="text-3xl">{ICONS[category.id] ?? "🚗"}</span>
-          <span className="text-sm font-semibold">{category.name}</span>
+          <span className="font-display text-4xl transition group-hover:text-accent sm:text-6xl">
+            {category.name}
+          </span>
+          <span className="label-mono shrink-0 text-sm text-muted">[{String(i + 1).padStart(2, "0")}]</span>
         </Link>
       ))}
     </div>

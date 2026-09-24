@@ -14,12 +14,12 @@ export default async function BundleDetailPage(props: PageProps<"/bundles/[bundl
 
   return (
     <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6">
-      <p className="text-xs uppercase tracking-widest text-muted">Bundle</p>
-      <h1 className="mt-1 text-3xl font-bold tracking-tight">{bundle.name}</h1>
-      <p className="mt-2 text-muted">{bundle.tagline}</p>
+      <p className="label-mono text-xs text-accent">[ Bundle ]</p>
+      <h1 className="font-display mt-2 text-4xl sm:text-5xl">{bundle.name}</h1>
+      <p className="label-mono mt-3 text-xs text-muted">{bundle.tagline}</p>
 
       <div className="mt-6 flex flex-wrap items-center gap-4">
-        <p className="text-2xl font-bold">{formatInr(total)}</p>
+        <p className="font-mono text-2xl font-bold text-accent">{formatInr(total)}</p>
         <AddBundleToCart products={products} />
       </div>
 

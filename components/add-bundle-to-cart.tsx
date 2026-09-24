@@ -15,7 +15,7 @@ export function AddBundleToCart({ products }: { products: Product[] }) {
         products.forEach((p) => addItem(p, 1));
         router.push("/cart");
       }}
-      className="rounded-xl bg-accent px-6 py-3 text-sm font-bold text-accent-foreground hover:bg-accent/90"
+      className="label-mono bg-accent px-6 py-3 text-xs font-bold text-accent-foreground hover:bg-accent/90"
     >
       Add complete bundle to cart
     </button>

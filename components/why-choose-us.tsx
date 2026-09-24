@@ -15,11 +15,11 @@ const PILLARS = [
 
 export function WhyChooseUs() {
   return (
-    <div className="grid gap-8 sm:grid-cols-3">
+    <div className="grid grid-cols-1 divide-y divide-border border border-border sm:grid-cols-3 sm:divide-x sm:divide-y-0">
       {PILLARS.map((pillar) => (
-        <div key={pillar.title}>
-          <p className="text-lg font-bold">{pillar.title}</p>
-          <p className="mt-2 text-sm text-muted">{pillar.description}</p>
+        <div key={pillar.title} className="p-6">
+          <p className="text-lg font-bold uppercase tracking-tight">{pillar.title}</p>
+          <p className="label-mono mt-3 text-xs text-muted">{pillar.description}</p>
         </div>
       ))}
     </div>

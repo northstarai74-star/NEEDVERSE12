@@ -16,6 +16,7 @@ import { WhyChooseUs } from "@/components/why-choose-us";
 import { Testimonials } from "@/components/testimonials";
 import { Faq } from "@/components/faq";
 import { Section } from "@/components/section";
+import { CtaButton } from "@/components/cta-button";
 import { formatInr } from "@/lib/utils";
 
 export default async function Home() {
@@ -34,14 +35,15 @@ export default async function Home() {
   return (
     <div>
       {/* Hero */}
-      <section className="border-b border-border">
-        <div className="mx-auto flex max-w-3xl flex-col items-center px-4 py-16 text-center sm:px-6 sm:py-24">
-          <h1 className="text-4xl font-bold leading-tight tracking-tight sm:text-6xl">
-            Upgrade your drive.
+      <section className="bg-dot-grid relative overflow-hidden border-b border-border">
+        <div className="mx-auto flex max-w-3xl flex-col items-center px-4 py-20 text-center sm:px-6 sm:py-28">
+          <p className="label-mono text-xs text-accent">[ vehicle-fitment accessories ]</p>
+          <h1 className="font-display mt-4 text-6xl sm:text-8xl">
+            Upgrade
             <br />
-            Start with your car.
+            your drive.
           </h1>
-          <p className="mt-5 max-w-lg text-muted">
+          <p className="label-mono mt-6 max-w-md text-xs text-muted">
             Tell us what you drive. We&apos;ll show you only the accessories that actually fit it — no more
             guessing from a giant catalog.
           </p>
@@ -58,19 +60,19 @@ export default async function Home() {
         eyebrow="Popular"
         title="Trending accessories"
         action={
-          <Link href="/shop" className="text-sm font-semibold text-accent hover:underline">
-            View all →
-          </Link>
+          <CtaButton href="/shop" variant="dark">
+            View all
+          </CtaButton>
         }
       >
         <ProductGrid products={featured} />
       </Section>
 
-      <Section eyebrow="Process" title="How it works" className="bg-surface/40">
+      <Section eyebrow="Process" title="How it works">
         <HowItWorks />
       </Section>
 
-      <Section eyebrow="Why NeedVerse" title="Built around your exact car">
+      <Section eyebrow="Why NeedVerse" title="Built around your car">
         <WhyChooseUs />
       </Section>
 
@@ -79,27 +81,22 @@ export default async function Home() {
       </Section>
 
       {heroBundle && heroBundleProducts.length > 0 && (
-        <Section eyebrow="Build your car" title={heroBundle.name} className="bg-surface/40">
-          <div className="rounded-2xl border border-border bg-surface p-6 sm:p-8">
-            <p className="text-muted">{heroBundle.tagline}</p>
-            <ul className="mt-4 grid gap-2 sm:grid-cols-2">
+        <Section eyebrow="Build your car" title={heroBundle.name}>
+          <div className="border border-border p-6 sm:p-8">
+            <p className="label-mono text-xs text-muted">{heroBundle.tagline}</p>
+            <ul className="mt-4 grid gap-px sm:grid-cols-2">
               {heroBundleProducts.map((p) => (
-                <li key={p.id} className="flex items-center justify-between rounded-lg bg-background px-4 py-2.5 text-sm">
-                  <span>{p.name}</span>
+                <li key={p.id} className="label-mono flex items-center justify-between border-b border-border py-3 text-xs">
+                  <span className="text-foreground">{p.name}</span>
                   <span className="text-muted">{formatInr(p.priceInr)}</span>
                 </li>
               ))}
             </ul>
             <div className="mt-6 flex flex-wrap items-center justify-between gap-4">
-              <p className="text-lg font-bold">
-                Bundle total: {formatInr(heroBundleTotal)}
-              </p>
-              <Link
-                href={`/bundles/${heroBundle.id}`}
-                className="rounded-xl bg-accent px-6 py-3 text-sm font-bold text-accent-foreground hover:bg-accent/90"
-              >
+              <p className="font-display text-3xl">Total: {formatInr(heroBundleTotal)}</p>
+              <CtaButton href={`/bundles/${heroBundle.id}`} variant="accent">
                 View bundle
-              </Link>
+              </CtaButton>
             </div>
           </div>
         </Section>
@@ -114,27 +111,18 @@ export default async function Home() {
       </Section>
 
       <Section eyebrow="Guides" title="Not sure where to start?">
-        <div className="grid gap-4 sm:grid-cols-3">
-          <Link
-            href="/cars"
-            className="rounded-2xl border border-border bg-surface p-6 transition hover:border-accent/50"
-          >
-            <p className="font-semibold">Shop by car</p>
-            <p className="mt-1 text-sm text-muted">Browse accessories organized by make and model.</p>
+        <div className="grid grid-cols-1 divide-y divide-border border border-border sm:grid-cols-3 sm:divide-x sm:divide-y-0">
+          <Link href="/cars" className="group p-6 transition hover:bg-surface">
+            <p className="text-lg font-bold uppercase tracking-tight group-hover:text-accent">Shop by car</p>
+            <p className="label-mono mt-2 text-xs text-muted">Browse accessories organized by make and model.</p>
           </Link>
-          <Link
-            href="/guides"
-            className="rounded-2xl border border-border bg-surface p-6 transition hover:border-accent/50"
-          >
-            <p className="font-semibold">Buying guides</p>
-            <p className="mt-1 text-sm text-muted">Quick reads on what to buy first for your car.</p>
+          <Link href="/guides" className="group p-6 transition hover:bg-surface">
+            <p className="text-lg font-bold uppercase tracking-tight group-hover:text-accent">Buying guides</p>
+            <p className="label-mono mt-2 text-xs text-muted">Quick reads on what to buy first for your car.</p>
           </Link>
-          <Link
-            href="/bundles"
-            className="rounded-2xl border border-border bg-surface p-6 transition hover:border-accent/50"
-          >
-            <p className="font-semibold">Curated bundles</p>
-            <p className="mt-1 text-sm text-muted">Pre-built upgrade packages at a bundle price.</p>
+          <Link href="/bundles" className="group p-6 transition hover:bg-surface">
+            <p className="text-lg font-bold uppercase tracking-tight group-hover:text-accent">Curated bundles</p>
+            <p className="label-mono mt-2 text-xs text-muted">Pre-built upgrade packages at a bundle price.</p>
           </Link>
         </div>
       </Section>

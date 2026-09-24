@@ -7,12 +7,12 @@ const STEPS = [
 
 export function HowItWorks() {
   return (
-    <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+    <div className="bg-grain grid grid-cols-1 divide-y divide-border border border-border sm:grid-cols-2 sm:divide-x sm:divide-y-0 lg:grid-cols-4">
       {STEPS.map((step) => (
-        <div key={step.number} className="rounded-2xl border border-border bg-surface p-6">
-          <span className="text-sm font-bold text-accent">{step.number}</span>
-          <p className="mt-3 font-semibold">{step.title}</p>
-          <p className="mt-1 text-sm text-muted">{step.description}</p>
+        <div key={step.number} className="relative p-6">
+          <span className="font-display text-3xl text-accent">{step.number}.</span>
+          <p className="mt-4 text-lg font-bold uppercase tracking-tight">{step.title}</p>
+          <p className="label-mono mt-2 text-xs text-muted">{step.description}</p>
         </div>
       ))}
     </div>

@@ -3,7 +3,7 @@ export const metadata = { title: "Shipping & Returns — NeedVerse" };
 export default function ReturnsPage() {
   return (
     <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6">
-      <h1 className="text-3xl font-bold tracking-tight">Shipping & returns</h1>
+      <h1 className="font-display text-4xl sm:text-5xl">Shipping & returns</h1>
 
       <div className="mt-8 space-y-6 text-sm">
         <div>

@@ -19,7 +19,7 @@ export function PriceTag({
   };
 
   return (
-    <div className={cn("flex items-baseline gap-2", className)}>
+    <div className={cn("flex items-baseline gap-2 font-mono", className)}>
       <span className={sizes[size]}>{formatInr(priceInr)}</span>
       {compareAtPriceInr && compareAtPriceInr > priceInr && (
         <span className="text-sm text-muted line-through">{formatInr(compareAtPriceInr)}</span>

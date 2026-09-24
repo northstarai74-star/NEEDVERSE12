@@ -1,85 +1,87 @@
 import Link from "next/link";
+import { CtaButton } from "./cta-button";
 
-const COLUMNS = [
-  {
-    title: "Shop",
-    links: [
-      { href: "/shop", label: "All accessories" },
-      { href: "/cars", label: "Shop by car" },
-      { href: "/bundles", label: "Bundles" },
-    ],
-  },
-  {
-    title: "Support",
-    links: [
-      { href: "/track-order", label: "Track order" },
-      { href: "/guides", label: "Buying guides" },
-      { href: "/contact", label: "Contact us" },
-    ],
-  },
-  {
-    title: "Company",
-    links: [
-      { href: "/about", label: "About NeedVerse" },
-      { href: "/returns", label: "Shipping & returns" },
-    ],
-  },
+const NAV_COLUMN = [
+  { href: "/", label: "Home" },
+  { href: "/shop", label: "Shop" },
+  { href: "/cars", label: "Shop by car" },
+  { href: "/guides", label: "Guides" },
+  { href: "/contact", label: "Contact" },
 ];
 
 const SOCIALS = [
-  { label: "Instagram", href: "https://instagram.com" },
-  { label: "Facebook", href: "https://facebook.com" },
+  { label: "IG", href: "https://instagram.com" },
+  { label: "FB", href: "https://facebook.com" },
   { label: "X", href: "https://x.com" },
 ];
 
 export function Footer() {
   return (
-    <footer className="border-t border-border bg-surface">
-      <div className="mx-auto grid max-w-6xl gap-10 px-4 py-12 sm:px-6 md:grid-cols-[1.5fr_1fr_1fr_1fr]">
-        <div>
-          <p className="text-lg font-bold tracking-tight">
-            NEED<span className="text-accent">VERSE</span>
-          </p>
-          <p className="mt-3 max-w-xs text-sm text-muted">
-            The easiest way to upgrade your specific car. Tell us what you drive, we&apos;ll show you what fits.
-          </p>
-          <div className="mt-4 space-y-1 text-sm text-muted">
-            <p>support@needverse.example</p>
-            <p>Mon–Sat, 10am–7pm IST</p>
-          </div>
-          <div className="mt-4 flex gap-4 text-sm">
-            {SOCIALS.map((social) => (
-              <a
-                key={social.label}
-                href={social.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-muted hover:text-foreground"
-              >
-                {social.label}
-              </a>
-            ))}
-          </div>
+    <footer>
+      <div className="bg-grain border-y border-border">
+        <div className="relative mx-auto flex max-w-6xl flex-col items-start justify-between gap-6 px-4 py-14 sm:px-6 md:flex-row md:items-center">
+          <h2 className="font-display text-4xl sm:text-5xl">Ready to upgrade your car?</h2>
+          <CtaButton href="/cars" variant="light">
+            Find my car
+          </CtaButton>
         </div>
+      </div>
 
-        {COLUMNS.map((col) => (
-          <div key={col.title}>
-            <p className="text-sm font-semibold">{col.title}</p>
-            <ul className="mt-3 space-y-2">
-              {col.links.map((link) => (
+      <div className="bg-grain">
+        <div className="relative mx-auto grid max-w-6xl gap-10 px-4 py-14 sm:px-6 md:grid-cols-[1.5fr_1fr_1fr]">
+          <div>
+            <p className="font-display text-2xl">
+              NEED<span className="text-accent">VERSE</span>
+            </p>
+            <p className="label-mono mt-4 max-w-xs text-xs text-muted">
+              Find the perfect accessory, matched to your exact car, and shop with confidence.
+            </p>
+            <div className="label-mono mt-6 flex gap-3 text-xs">
+              {SOCIALS.map((social, i) => (
+                <span key={social.label} className="flex items-center gap-3">
+                  <a href={social.href} target="_blank" rel="noopener noreferrer" className="text-muted hover:text-foreground">
+                    {social.label}
+                  </a>
+                  {i < SOCIALS.length - 1 && <span className="text-border">/</span>}
+                </span>
+              ))}
+            </div>
+          </div>
+
+          <div>
+            <p className="label-mono text-xs text-muted">Navigation</p>
+            <ul className="mt-4 space-y-2">
+              {NAV_COLUMN.map((link) => (
                 <li key={link.href}>
-                  <Link href={link.href} className="text-sm text-muted hover:text-foreground">
+                  <Link href={link.href} className="font-display text-lg hover:text-accent">
                     {link.label}
                   </Link>
                 </li>
               ))}
             </ul>
           </div>
-        ))}
-      </div>
 
-      <div className="border-t border-border px-4 py-4 text-center text-xs text-muted sm:px-6">
-        © {new Date().getFullYear()} NeedVerse. Vehicle compatibility checked. Secure payments. Clear returns.
+          <div>
+            <p className="label-mono text-xs text-muted">Contact</p>
+            <div className="label-mono mt-4 space-y-2 text-xs text-muted">
+              <p>support@needverse.example</p>
+              <p>Mon–Sat, 10am–7pm IST</p>
+              <p>Track order or returns any time</p>
+            </div>
+          </div>
+        </div>
+
+        <div className="label-mono relative flex flex-col gap-2 border-t border-border px-4 py-5 text-[11px] text-muted sm:flex-row sm:items-center sm:justify-between sm:px-6">
+          <p>© {new Date().getFullYear()} NeedVerse. All rights reserved.</p>
+          <div className="flex gap-4">
+            <Link href="/returns" className="hover:text-foreground">
+              Shipping &amp; returns
+            </Link>
+            <Link href="/about" className="hover:text-foreground">
+              About
+            </Link>
+          </div>
+        </div>
       </div>
     </footer>
   );

@@ -68,17 +68,17 @@ export function VehicleSelector({
   }
 
   const selectClass =
-    "w-full rounded-xl border border-border bg-background px-4 py-3 text-sm text-foreground disabled:opacity-40 focus:border-accent focus:outline-none";
+    "label-mono w-full border border-border bg-background px-4 py-3 text-xs text-foreground disabled:opacity-40 focus:border-accent focus:outline-none";
 
   return (
     <form
       onSubmit={handleSubmit}
       className={cn(
-        "rounded-2xl border border-border bg-surface p-5 shadow-xl shadow-black/10",
+        "border border-border bg-surface p-5 text-left shadow-xl shadow-black/30",
         variant === "hero" ? "w-full max-w-xl" : "w-full"
       )}
     >
-      <p className="mb-4 text-sm font-semibold text-muted">FIND ACCESSORIES FOR YOUR CAR</p>
+      <p className="label-mono mb-4 text-xs text-accent">[ find accessories for your car ]</p>
       <div className={cn("grid gap-3", variant === "hero" ? "sm:grid-cols-2" : "sm:grid-cols-4")}>
         <select value={makeId} onChange={(e) => handleMakeChange(e.target.value)} className={selectClass}>
           <option value="">Select brand</option>
@@ -135,9 +135,9 @@ export function VehicleSelector({
       <button
         type="submit"
         disabled={!canSubmit}
-        className="mt-4 w-full rounded-xl bg-accent py-3.5 text-sm font-bold text-accent-foreground transition hover:bg-accent/90 disabled:cursor-not-allowed disabled:bg-border disabled:text-muted"
+        className="label-mono mt-4 w-full bg-accent py-3.5 text-xs font-bold text-accent-foreground transition hover:bg-accent/90 disabled:cursor-not-allowed disabled:bg-border disabled:text-muted"
       >
-        Find my accessories
+        Find my accessories »
       </button>
     </form>
   );

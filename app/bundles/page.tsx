@@ -12,29 +12,25 @@ export default async function BundlesPage() {
 
   return (
     <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6">
-      <p className="text-xs uppercase tracking-widest text-muted">Bundles</p>
-      <h1 className="mt-1 text-3xl font-bold tracking-tight">Curated upgrade packages</h1>
-      <p className="mt-2 max-w-xl text-sm text-muted">
+      <p className="label-mono text-xs text-accent">[ Bundles ]</p>
+      <h1 className="font-display mt-2 text-4xl sm:text-5xl">Curated upgrade packages</h1>
+      <p className="label-mono mt-3 max-w-xl text-xs text-muted">
         Instead of picking accessories one by one, grab a bundle built around how you actually use your car.
       </p>
 
-      <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="mt-10 grid grid-cols-1 divide-y divide-border border border-border sm:grid-cols-3 sm:divide-x sm:divide-y-0">
         {withProducts.map(({ bundle, products }) => {
           const total = products.reduce((sum, p) => sum + p.priceInr, 0);
           return (
-            <Link
-              key={bundle.id}
-              href={`/bundles/${bundle.id}`}
-              className="flex flex-col rounded-2xl border border-border bg-surface p-6 transition hover:border-accent/50"
-            >
-              <p className="font-bold">{bundle.name}</p>
-              <p className="mt-1 text-sm text-muted">{bundle.tagline}</p>
-              <ul className="mt-4 flex-1 space-y-1 text-sm text-muted">
+            <Link key={bundle.id} href={`/bundles/${bundle.id}`} className="flex flex-col p-6 transition hover:bg-surface">
+              <p className="text-lg font-bold uppercase tracking-tight">{bundle.name}</p>
+              <p className="label-mono mt-2 text-xs text-muted">{bundle.tagline}</p>
+              <ul className="label-mono mt-4 flex-1 space-y-1 text-xs text-muted">
                 {products.map((p) => (
                   <li key={p.id}>• {p.name}</li>
                 ))}
               </ul>
-              <p className="mt-4 font-bold">{formatInr(total)}</p>
+              <p className="font-mono mt-4 text-lg font-bold text-accent">{formatInr(total)}</p>
             </Link>
           );
         })}

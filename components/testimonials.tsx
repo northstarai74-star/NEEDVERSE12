@@ -20,15 +20,28 @@ const TESTIMONIALS = [
   },
 ];
 
+function initials(name: string): string {
+  return name
+    .split(" ")
+    .map((w) => w[0])
+    .join("")
+    .toUpperCase();
+}
+
 export function Testimonials() {
   return (
-    <div className="grid gap-6 sm:grid-cols-3">
+    <div className="bg-grain grid grid-cols-1 divide-y divide-border border border-border sm:grid-cols-3 sm:divide-x sm:divide-y-0">
       {TESTIMONIALS.map((t) => (
-        <figure key={t.name} className="rounded-2xl border border-border bg-surface p-6">
-          <blockquote className="text-sm leading-relaxed text-foreground">&ldquo;{t.quote}&rdquo;</blockquote>
-          <figcaption className="mt-4 text-sm">
-            <span className="font-semibold">{t.name}</span>
-            <span className="text-muted"> — {t.role}</span>
+        <figure key={t.name} className="relative p-6">
+          <blockquote className="font-display text-2xl leading-[1.05]">&ldquo;{t.quote}&rdquo;</blockquote>
+          <figcaption className="mt-6 flex items-center gap-3">
+            <span className="flex h-9 w-9 items-center justify-center rounded-full bg-accent/20 text-xs font-bold text-accent">
+              {initials(t.name)}
+            </span>
+            <span className="label-mono text-xs">
+              <span className="text-foreground">{t.name}</span>
+              <span className="text-muted"> — {t.role}</span>
+            </span>
           </figcaption>
         </figure>
       ))}
