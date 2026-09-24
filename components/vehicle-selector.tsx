@@ -75,7 +75,7 @@ export function VehicleSelector({
       onSubmit={handleSubmit}
       className={cn(
         "border border-border bg-surface p-5 text-left shadow-xl shadow-black/30",
-        variant === "hero" ? "w-full max-w-xl" : "w-full"
+        variant === "hero" ? "mx-auto w-full max-w-xl" : "w-full"
       )}
     >
       <p className="label-mono mb-4 text-xs text-accent">[ find accessories for your car ]</p>
